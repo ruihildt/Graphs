@@ -6,12 +6,14 @@ from util import Stack, Queue  # These may come in handy
 class Graph:
     """Represent a graph as a dictionary of vertices mapping labels to edges."""
     def __init__(self):
+        # create an empty dict for verts
         self.vertices = {}
 
     def add_vertex(self, vertex):
         """
         Add a vertex to the graph.
         """
+        # create an empty set
         self.vertices[vertex] = set()
 
     def add_edge(self, v1, v2):
@@ -32,14 +34,46 @@ class Graph:
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        # create an empty queue and enqueue the starting vertex ID
+        q = Queue()
+        q.enqueue(starting_vertex)
+        # create a set to store te visited vertices
+        visited = set()
+        # while queue is not empty
+        while q.size() > 0:
+            # dequeue the first vertex
+            v = q.dequeue()
+            # check if that vertex has not been visited
+            if v not in visited:
+                # mark it as visited
+                print(v)
+                visited.add(v)
+                # add all of its neighbours to the back of the queue
+                for next_vertex in self.vertices[v]:
+                    q.enqueue(next_vertex)
 
     def dft(self, starting_vertex):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        # create an empty stack and push the starting vertex ID
+        s = Stack()
+        s.push(starting_vertex)
+        # create a set to store te visited vertices
+        visited = set()
+        # while stack is not empty
+        while s.size() > 0:
+            # pop the first vertex
+            v = s.pop()
+            # check if that vertex has not been visited
+            if v not in visited:
+                # mark it as visited
+                print(v)
+                visited.add(v)
+                # add all of its neighbours to the top of the stack
+                for next_vertex in self.vertices[v]:
+                    s.push(next_vertex)
 
     def dft_recursive(self, starting_vertex):
         """
