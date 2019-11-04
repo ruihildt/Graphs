@@ -12,13 +12,20 @@ class Graph:
         """
         Add a vertex to the graph.
         """
-        pass  # TODO
+        self.vertices[vertex] = set()
 
     def add_edge(self, v1, v2):
         """
         Add a directed edge to the graph.
         """
-        pass  # TODO
+        # check if v1 and v2 exist in vertices list
+        if v1 in self.vertices and v2 in self.vertices:
+            # add v2 at v1 of vertices
+            self.vertices[v1].add(v2)
+        # otherwise
+        else:
+            # raise an error
+            raise IndexError("One or more vertex does not exist")
 
     def bft(self, starting_vertex):
         """
@@ -49,7 +56,7 @@ class Graph:
         breath-first order.
         """
         pass  # TODO
-    
+
     def dfs(self, starting_vertex, destination_vertex):
         """
         Return a list containing a path from
