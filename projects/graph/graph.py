@@ -84,7 +84,7 @@ class Graph:
         # Add current vert to visited and print it
         visited.add(starting_vertex)
         print("dft_recursive", starting_vertex)
-        # Recursive visit of all the verts in the set
+        # Recursiion of all the verts in the dict that haven't been visited yet
         for i in self.vertices[starting_vertex]:
             if i not in visited:
                 self.dft_recursive(i, visited)
