@@ -7,28 +7,33 @@ class Graph:
     """Represent a graph as a dictionary of vertices mapping labels to edges."""
     def __init__(self):
         self.vertices = {}
+
     def add_vertex(self, vertex):
         """
         Add a vertex to the graph.
         """
         pass  # TODO
+
     def add_edge(self, v1, v2):
         """
         Add a directed edge to the graph.
         """
         pass  # TODO
+
     def bft(self, starting_vertex):
         """
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
         pass  # TODO
+
     def dft(self, starting_vertex):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
         """
         pass  # TODO
+
     def dft_recursive(self, starting_vertex):
         """
         Print each vertex in depth-first order
@@ -36,6 +41,7 @@ class Graph:
         This should be done using recursion.
         """
         pass  # TODO
+
     def bfs(self, starting_vertex, destination_vertex):
         """
         Return a list containing the shortest path from
@@ -43,6 +49,7 @@ class Graph:
         breath-first order.
         """
         pass  # TODO
+    
     def dfs(self, starting_vertex, destination_vertex):
         """
         Return a list containing a path from
