@@ -129,7 +129,33 @@ class Graph:
         starting_vertex to destination_vertex in
         depth-first order.
         """
-        pass  # TODO
+        # create an empty stack and enqueue the starting vertex
+        s = Stack()
+        s.push([starting_vertex])
+        # create a set to store te visited vertices
+        visited = list()
+        # while stack is not empty
+        while s.size() > 0:
+            # pop to the path
+            path = s.pop()
+            # set a vert to the last item in the path
+            vert = path[-1]
+            # check if that vertex has not been visited
+            if vert not in visited:
+                # if vert is equal to the target value
+                if vert is destination_vertex:
+                    return path
+                # mark it as visited
+                visited.append(vert)
+                # add all of its neighbours to the back of the stack
+                for next_vertex in self.vertices[vert]:
+                    # set a new path equal to a new list of the a path (copy)
+                    new_path = list(path)
+                    # append next vert to new path
+                    new_path.append(next_vertex)
+                    # enqueue the new path
+                    s.push(new_path)
+        return None
 
 
 
