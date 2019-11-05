@@ -46,7 +46,7 @@ class Graph:
             # check if that vertex has not been visited
             if v not in visited:
                 # mark it as visited
-                print(v)
+                print('bft', v)
                 visited.add(v)
                 # add all of its neighbours to the back of the queue
                 for next_vertex in self.vertices[v]:
@@ -69,7 +69,7 @@ class Graph:
             # check if that vertex has not been visited
             if v not in visited:
                 # mark it as visited
-                print(v)
+                print('dft', v)
                 visited.add(v)
                 # add all of its neighbours to the top of the stack
                 for next_vertex in self.vertices[v]:
@@ -83,7 +83,7 @@ class Graph:
         """
         # Add current vert to visited and print it
         visited.add(starting_vertex)
-        print("dft_recursive", starting_vertex)
+        print("dft_rec", starting_vertex)
         # Recursiion of all the verts in the dict that haven't been visited yet
         for i in self.vertices[starting_vertex]:
             if i not in visited:
@@ -95,7 +95,33 @@ class Graph:
         starting_vertex to destination_vertex in
         breath-first order.
         """
-        pass  # TODO
+        # create an empty queue and enqueue the starting vertex
+        q = Queue()
+        q.enqueue([starting_vertex])
+        # create a set to store te visited vertices
+        visited = list()
+        # while queue is not empty
+        while q.size() > 0:
+            # dequeue to the path
+            path = q.dequeue()
+            # set a vert to the last item in the path
+            vert = path[-1]
+            # check if that vertex has not been visited
+            if vert not in visited:
+                # if vert is equal to the target value
+                if vert is destination_vertex:
+                    return path
+                # mark it as visited
+                visited.append(vert)
+                # add all of its neighbours to the back of the queue
+                for next_vertex in self.vertices[vert]:
+                    # set a new path equal to a new list of the a path (copy)
+                    new_path = list(path)
+                    # append next vert to new path
+                    new_path.append(next_vertex)
+                    # enqueue the new path
+                    q.enqueue(new_path)
+        return None
 
     def dfs(self, starting_vertex, destination_vertex):
         """
