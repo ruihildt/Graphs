@@ -92,11 +92,8 @@ class SocialGraph:
 
             for user in self.friendships[node]:
                 if user not in visited:
-                    visited[user] = 0
+                    visited[user] = self.bfs( user, userID)
                     q.enqueue(user)
-
-            for key, value in visited.items():
-                visited[key] = self.bfs( key, userID)
 
         return visited
 
